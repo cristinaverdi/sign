@@ -159,3 +159,13 @@ main{
 	  rgba(255, 0, 0, 0.336), 
 	  rgba(48, 42, 42, 0.205));
 }
+
+.no-display {
+    display: none;
+}
+
+.success > label {
+	color: azure;
+	font-weight: bold;
+	font-size: xx-large
+}

@@ -11,35 +11,27 @@ class Login {
     event.preventDefault();
     const usersDB = db.getAllUsers();
     const email = this.emailInput.value;
-    console.log(email)
     const password = this.passwordInput.value;
-    console.log(password)
     const user = usersDB.find( (userObj) => {
       if (userObj.email === email && userObj.password === password) {
         return true;
       }
     })
-    console.log('Eureka!!!')
     this.showMessage(user);
   }
 
-  showMessage = (user) => {  
-    //this.messageContainer.innerHTML = "";
-    //const message = document.createElement('p');
-    if (user) {
-    //   message.innerHTML = `hola, ${user.email}`;
-    //   message.classList.add("correct-message");
-    }
-    else {
-      //message.innerHTML = 'el email o/y password son incorectos';
-    }
-    // this.messageContainer.appendChild(message);
-    
-    //if (user) this.redirect();
+  showMessage = (user) => {      
+    if (user) this.redirect();
   }
 
   redirect = () => {
-    setTimeout( ()=> location.assign('index.html'), 500);
+    document.querySelector('#success-login').classList.remove('no-display')
+    document.querySelector('#forgot').classList.add('no-display')
+    setTimeout( ()=> {
+        location.assign('index.html')
+        document.querySelector('#success-login').classList.add('no-display')
+        document.querySelector('#forgot').classList.remove('no-display')
+    }, 2500);
   }
 }
 const login = new Login();
